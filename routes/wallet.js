@@ -5,7 +5,7 @@ const walletController = require('../controllers/wallet.controller');
 
 router.post('/deposit', walletController.deposit);
 router.get('/deposit', (req, res) => {
-    res.send({'route':'deposit'});
+  res.send({'route':'deposit'});
 })
 // router.post('/transfer', walletController.transfer);
 // router.get('/transactions', walletController.transactions);
