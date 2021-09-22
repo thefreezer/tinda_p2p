@@ -17,9 +17,10 @@
 + POST /auth/register
   - body
     {
-      phoneNumber: number,
+      phone_number: number,
       password: string,
-      name: string,
+      first_name: string,
+      last_name: string,
     }
   - 200
     {

@@ -1,11 +1,27 @@
-const getUser = (req, res) => {
-    const query = 'SELECT * FROM users WHERE user_id = ';
-    
-    console.log("GET USER");
-    res.send(req.body)
+const userService = require('../services/user.service');
+
+const createUser = (req, res) => {
+}
+
+const getUser = async (req, res) => {
+  const user = await userService.getUserById(req.params.user_id);
+  res.send(user);
+};
+
+const getAllUsers = (req, res) => {
+};
+
+
+const updateUser = (req, res) => {
+}
+
+
+const deleteUser = (req, res) => {
 }
 
 module.exports = {
-    getUser
+  createUser,
+  getUser,
+  updateUser,
+  deleteUser,
 }
-

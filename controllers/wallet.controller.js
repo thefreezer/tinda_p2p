@@ -1,4 +1,4 @@
-// const transactionService = require('../services');
+const walletService = require('../services/wallet.service');
 
 const deposit = (req, res) => {
   const q_T = `
@@ -33,10 +33,8 @@ const transactions = (req, res) => {
 
 // returns user total balance
 const balance = (req, res) => {
-  const query = `
-    SELECT balance FROM wallets, users
-    WHERE wallets.user_id = users.id`;
-  res.send({'msg':'balance'});
+  const data = await walletService.getBalanceById(req.params.user_id);
+  res.send(data);
 }
 
 module.exports = {
