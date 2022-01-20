@@ -56,28 +56,49 @@ index.js includes <app.js> -> routes -> index.js -> auth/transaction.route.js ->
 
 ### Tables
 + users (
-    id
-    password
-    first_name
-    last_name
-    phone_number
-    address
-    created_at
+    id           uuid
+    password          varchar(255)
+    first_name        varchar(255)
+    last_name         varchar(255)
+    phone_number      integer(unique)
+    address           varchar(255)
+    account_number    uuid
+    created_at        varchar(255)
   )
 
 + wallets (
-    account_number
-    user_id
-    balance
+    account_number    uuid
+    balance           real
+    created_at        varchar(255)
 )
 
 + transactions (
-    id
-    from_id
-    to_id
-    amount
-    operation
+    id                uuid
+    from_id           uuid
+    to_id             uuid
+    amount            real
+    operation         varchar(10)
+    created_at        varchar(255)
 )
+
+### Notes
+- user.id, user.phone_number, user.account_number should be unique
+- *token contains user.id*
+
+### API TODO
+- [] when creating new user, phone_number should be unique
+- [] cannot send money to yourself
+- [] user not found proper response
+
+- [] permission for deposit route
+
+- [] return of POST /auth/login
+- [] return of POST /auth/register
+
+- [] return of POST /wallet/deposit
+- [] return of POST /wallet/transfer
+- [] return of POST /wallet/transactions
+- [] return of GET  /wallet/balance
 
 ### API documentation
 - POST /auth/login
@@ -85,7 +106,7 @@ index.js includes <app.js> -> routes -> index.js -> auth/transaction.route.js ->
 
 - POST /wallet/deposit
 - POST /wallet/transfer
-- GET /wallet/transactions
+- POST /wallet/transactions
 - GET  /wallet/balance
 
 

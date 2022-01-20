@@ -5,6 +5,6 @@ const router = express.Router();
 
 // TODO: add validation middleware
 router.post('/login', authController.login);
-// router.post('/register', authController.register);
+router.post('/register', authController.register);
 
 module.exports = router;

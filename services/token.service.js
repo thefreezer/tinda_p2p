@@ -9,9 +9,10 @@ const config = require('../config')
  * @param {string} [secret]
  * @returns {string}
  */
-const generateToken = (user_id, expires, secret = config.jwt.secret) => {
+const generateToken = (id, expires, secret = config.jwt.secret) => {
+  console.log('user_id', id)
   const payload = {
-    sub: user_id,
+    sub: id,
     // iat: moment().unix(),
     // exp: expires.unix(),
   };
@@ -20,7 +21,7 @@ const generateToken = (user_id, expires, secret = config.jwt.secret) => {
 
 /**
  * Generate auth tokens
- * @param {User} user
+ * @param {Object} user
  * @returns {Promise<Object>}
  */
 const generateAuthTokens = async (user) => {

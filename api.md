@@ -2,16 +2,16 @@
 + POST /auth/login
   - body
     {
-      email:  string,
+      phone_number:  int,
       password: string,
     }
   - 200
     {
       id: string,
-      accountNumber: number,
+      account_number: number,
       name: string,
-      phoneNumber: number,
-      createdAt: Date
+      phone_number: number,
+      created_at: string,
     }
 
 + POST /auth/register
@@ -25,19 +25,19 @@
   - 200
     {
       id: string,
-      accountNumber: number,
+      account_number: number,
       name: string,
-      createdAt:  Date,
+      created_at:  string,
     }
-
 
 # Transaction
 + POST /wallet/transfer
   - {Authorization: string}
+  - {Bearer: user_id}
   - body
     {
       amount: number,
-      destAccNumber: number,
+      phone_number: number,
     }
 
   - 200
@@ -63,9 +63,11 @@
 
 + POST /wallet/deposit
   - {Authorization: string}
+  - {Bearer: user_id}
   - body
     {
-      amount: number,
+      amount: real,
+      phone_number: number,
     }
 
   - 200
@@ -98,7 +100,7 @@
     accountNumber: number,
     phoneNumber: number,
     balance: number,
-    createAt: Date,
+    created_at: Date,
   }
 
 # General

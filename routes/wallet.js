@@ -1,11 +1,12 @@
 const express = require('express');
-
-const router = express.Router();
+const auth = require('../middlewares/auth');
 const walletController = require('../controllers/wallet.controller');
 
-router.post('/deposit', walletController.deposit);
-// router.post('/transfer', walletController.transfer);
-// router.get('/transactions', walletController.transactions);
-// router.get('/balance', walletController.balance);
+const router = express.Router();
+
+router.post('/transfer', auth, walletController.transfer);
+router.post('/deposit', auth, walletController.deposit);
+router.get('/transactions', auth, walletController.transactions);
+router.get('/balance', auth, walletController.balance);
 
 module.exports = router;
